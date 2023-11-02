@@ -22,7 +22,7 @@ class PostTableViewCell: UITableViewCell {
            imageView.layer.masksToBounds = true
            imageView.layer.borderColor = UIColor.label.cgColor
            imageView.backgroundColor = .lightGray
-        imageView.layer.cornerRadius = Radius.medium.rawValue
+           imageView.layer.cornerRadius = Radius.medium.rawValue
            return imageView
     }()
     
@@ -195,9 +195,31 @@ class PostTableViewCell: UITableViewCell {
         
     }
     
+    
+    public func postConfigure(with model : Post){
+        profilPhoto.image = UIImage(named: model.profilPhoto)
+        postimageView.image = UIImage(named: model.postPhoto)
+        usernameLabel.text = model.username
+        dateLbl.text = model.date
+        descriptionLbl.text = model.description
+        commentCount.text = model.commentCount
+        likeCount.text = model.likedText
+        
+        if model.liked == true {
+            likeBtn.image = UIImage(systemName: "heart.fill")
+            likeBtn.tintColor = .red
+        }
+        if model.saved == true {
+            saveBtn.image = UIImage(named: "savehover")
+        }
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
+     
     
 }
 

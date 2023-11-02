@@ -20,9 +20,10 @@ class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
         configureNavBar()
-        
     }
+    
     private func configureNavBar(){
             
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: logo, style: .plain, target: self, action: nil)

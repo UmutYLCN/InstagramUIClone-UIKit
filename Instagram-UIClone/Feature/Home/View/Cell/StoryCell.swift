@@ -1,11 +1,14 @@
 //
 //  StoryCell.swift
-//  Instagram-UIClone
+//  TableViewHeader-Tutorial
 //
-//  Created by umut yalçın on 28.10.2023.
+//  Created by umut yalçın on 30.10.2023.
 //
 
+
+
 import UIKit
+import SnapKit
 
 class StoryCell: UICollectionViewCell {
     static let identifier : String = "StoryCell"
@@ -50,12 +53,15 @@ class StoryCell: UICollectionViewCell {
         }
     }
     
+    public func configure(with model : Story){
+        story.image = UIImage(named: model.imgName)
+        storyUsername.text = model.username
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
 }
 
-#Preview {
-    StoryCell()
-}
+
