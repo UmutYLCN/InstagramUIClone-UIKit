@@ -12,9 +12,7 @@ import UIKit
 
 class SearchView : UIView {
     
-    
     private var collectionView: UICollectionView = {
-
         let cv = UICollectionView(frame: .zero, collectionViewLayout: SearchView.createDiscoverLayout())
         cv.register(SearchPostCell.self, forCellWithReuseIdentifier: SearchPostCell.identifier)
         return cv
@@ -86,6 +84,10 @@ class SearchView : UIView {
         let group = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .fractionalHeight(2.5)), subitems: [group2,group1,group3])
+        
+        group.contentInsets = NSDirectionalEdgeInsets(
+            top: 2, leading: 2, bottom: 2, trailing: 2
+        )
 
         //MARK: Sections
         let section = NSCollectionLayoutSection(group: group)
@@ -110,7 +112,7 @@ class SearchView : UIView {
 
 extension SearchView : UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 91
+        return 36
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -118,4 +120,5 @@ extension SearchView : UICollectionViewDelegate, UICollectionViewDataSource{
         return cell
     }
 }
+
 

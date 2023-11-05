@@ -71,7 +71,15 @@ extension StoryHeaderUIView : UICollectionViewDataSource ,UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryCell.identifier, for: indexPath) as! StoryCell
         cell.configure(with: Story(imgName: storys[indexPath.row].imgName, username: storys[indexPath.row].username))
+        
+        if indexPath.row == 0 {
+            cell.firstIndexActive()
+        }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.item)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width/4.5, height: collectionView.frame.height / 2)

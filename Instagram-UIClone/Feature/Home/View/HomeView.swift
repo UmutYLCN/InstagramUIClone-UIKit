@@ -127,8 +127,8 @@ class HomeView : UIView {
         headerView =  StoryHeaderUIView(frame: CGRect(x: 0, y: 0, width: 0, height: 145))
         tableView.tableHeaderView = headerView
          
-        
     }
+    
     
     private func setupView(){
         addSubview(tableView)
@@ -139,7 +139,6 @@ class HomeView : UIView {
             make.width.height.equalToSuperview()
         }
     }
-
     
     @available(*, unavailable)
     required init(coder : NSCoder) {

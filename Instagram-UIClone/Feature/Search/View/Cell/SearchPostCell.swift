@@ -21,6 +21,7 @@ class SearchPostCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setupUI()
         
         let images : [UIImage] = [
