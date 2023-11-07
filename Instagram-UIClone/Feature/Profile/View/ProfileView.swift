@@ -15,58 +15,20 @@ class ProfileView : UIView {
     var customNav  = CustomNavBar()
     var overView = ProfileOverview()
     var buttonRow = ButtonRow()
-    
-    private var collectionView: UICollectionView = {
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: ProfileView.createDiscoverLayout())
-        cv.register(SearchPostCell.self, forCellWithReuseIdentifier: SearchPostCell.identifier)
-        return cv
-    }()
-    
+    var postPhotos = ProfilePhotos()
 
     init(){
         super.init(frame: .zero)
         setupView()
         setupLayout()
-        let segmented = CustomSegmented(frame: CGRect(x: 0, y:370, width: UIScreen.main.bounds.size.width, height: 50), buttonTitle: ["search","reelsIcon"])
-        addSubview(segmented)
-        
-        collectionView.snp.makeConstraints { make in
-            make.top.equalTo(segmented.snp.bottom).offset(10)
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
-        
-        collectionView.delegate = self
-        collectionView.dataSource = self
     }
-    static func createDiscoverLayout() -> UICollectionViewCompositionalLayout{
-        
-        //MARK: Item
-        let item = NSCollectionLayoutItem(
-            layoutSize: NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(1/3),
-                heightDimension: .fractionalHeight(1)))
-    
-        item.contentInsets = NSDirectionalEdgeInsets(
-            top: 2, leading: 2, bottom: 2, trailing: 2
-        )
-      
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(2.5)), repeatingSubitem : item, count: 2)
 
-        //MARK: Sections
-        let section = NSCollectionLayoutSection(group: group)
-        
-        //MARK: return
-        return UICollectionViewCompositionalLayout(section: section)
-        
-    }
     
     private func setupView(){
         addSubview(customNav)
         addSubview(overView)
         addSubview(buttonRow)
+        addSubview(postPhotos)
     }
     
     private func setupLayout(){
@@ -82,6 +44,12 @@ class ProfileView : UIView {
         buttonRow.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(overView.snp.bottom).offset(140)
+            make.height.equalTo(40)
+        }
+        postPhotos.snp.makeConstraints { make in
+            make.top.equalTo(buttonRow.snp.bottom).offset(25)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalToSuperview()
         }
         
     }
@@ -93,18 +61,4 @@ class ProfileView : UIView {
 }
 
 
-extension ProfileView : UICollectionViewDelegate, UICollectionViewDataSource{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchPostCell.identifier, for: indexPath) as! SearchPostCell
-        return cell
-    }
-}
 
-
-#Preview {
-    ProfileView()
-}

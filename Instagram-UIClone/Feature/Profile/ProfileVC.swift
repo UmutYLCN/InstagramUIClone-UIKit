@@ -11,6 +11,7 @@ class ProfileVC: UIViewController {
     
     override func loadView() {
         super.loadView()
+        navigationController?.isNavigationBarHidden = true
         let profileView = ProfileView()
         view = profileView
     }
@@ -22,6 +23,4 @@ class ProfileVC: UIViewController {
 }
 
 
-#Preview {
-    UINavigationController(rootViewController: ProfileVC())
-}
+

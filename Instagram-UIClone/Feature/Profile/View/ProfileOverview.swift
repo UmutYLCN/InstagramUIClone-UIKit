@@ -76,6 +76,7 @@ class ProfileOverview : UIView {
     
     init() {
         super.init(frame: .zero)
+        backgroundColor = .yellow
         setupView()
         setupLayout()
         createOverView(count: "10", text: "Posts", mainView: view1)

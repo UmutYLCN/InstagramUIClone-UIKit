@@ -53,9 +53,7 @@ class ButtonRow : UIView {
         super.init(frame: .zero)
         setupView()
         setupLayout()
-        
     }
-    
     
     private func setupView()
     {
@@ -90,8 +88,4 @@ class ButtonRow : UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-}
-
-#Preview {
-    ButtonRow()
 }

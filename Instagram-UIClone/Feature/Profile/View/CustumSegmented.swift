@@ -13,7 +13,7 @@
 //
 
 import UIKit
-
+import SnapKit
 protocol CustomSegmentedDelegate:AnyObject {
     func change(to index:Int)
 }
@@ -26,6 +26,8 @@ class CustomSegmented: UIView {
     var textColor:UIColor = .gray
     var selectorViewColor: UIColor = .black
     var selectorTextColor: UIColor = .black
+    
+    
     
     weak var delegate:CustomSegmentedDelegate?
     
@@ -88,11 +90,18 @@ extension CustomSegmented {
         stack.alignment = .fill
         stack.distribution = .fillEqually
         addSubview(stack)
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        stack.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        stack.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        stack.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+//        stack.translatesAutoresizingMaskIntoConstraints = false
+//        stack.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+//        stack.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+//        stack.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+//        stack.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        
+        stack.snp.makeConstraints { make in
+            make.left.right.equalToSuperview()
+            make.bottom
+                .equalToSuperview()
+            make.height.equalTo(50)
+        }
     }
     
     private func configSelectorView() {
@@ -108,7 +117,8 @@ extension CustomSegmented {
         subviews.forEach({$0.removeFromSuperview()})
         for buttonTitle in buttonTitles {
             let button = UIButton(type: .system)
-            button.setImage(UIImage(named: buttonTitle), for: .normal)
+            button.setImage(UIImage(systemName: buttonTitle), for: .normal)
+            button.tintColor = .black
             button.addTarget(self, action:#selector(CustomSegmented.buttonAction(sender:)), for: .touchUpInside)
             button.setTitleColor(textColor, for: .normal)
             buttons.append(button)

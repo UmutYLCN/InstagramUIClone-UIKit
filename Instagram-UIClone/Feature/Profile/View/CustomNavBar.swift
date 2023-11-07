@@ -77,7 +77,7 @@ class CustomNavBar : UIView {
             make.left.equalTo(usernameBtn.snp.right).offset(10)
             make.centerY.equalToSuperview()
         }
-        
+    
         addNewBtn.snp.makeConstraints { make in
             make.width.height.equalTo(30)
             make.centerY.equalToSuperview()
@@ -88,7 +88,6 @@ class CustomNavBar : UIView {
             make.width.height.equalTo(30)
             make.centerY.equalToSuperview()
             make.right.equalTo(-20)
-
         }
     }
     
@@ -97,6 +96,4 @@ class CustomNavBar : UIView {
     }
 }
 
-#Preview {
-    CustomNavBar()
-}
+
