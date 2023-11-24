@@ -20,7 +20,7 @@ class ProfilePhotos : UIView {
     
     private var collectionView: UICollectionView = {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: ProfilePhotos.createDiscoverLayout())
-        cv.register(ProfileMyPhotos.self, forCellWithReuseIdentifier: ProfileMyPhotos.identifier)
+        cv.register(ProfileMyPhotosCell.self, forCellWithReuseIdentifier: ProfileMyPhotosCell.identifier)
         return cv
     }()
     
@@ -73,7 +73,7 @@ extension ProfilePhotos : UICollectionViewDelegate, UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileMyPhotos.identifier, for: indexPath) as! ProfileMyPhotos
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileMyPhotosCell.identifier, for: indexPath) as! ProfileMyPhotosCell
         cell.imageView.image = images[indexPath.row]
         return cell
     }

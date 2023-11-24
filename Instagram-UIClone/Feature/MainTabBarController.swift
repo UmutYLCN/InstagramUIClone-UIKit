@@ -47,9 +47,6 @@ class MainTabBarController: UITabBarController ,UITabBarControllerDelegate {
         tabBar.isTranslucent = false
         tabBar.backgroundColor = .systemBackground
         setViewControllers([vc1,vc2,vc3,vc4,vc5], animated: true)
-        
-        
-        
        }
     
     fileprivate func templateNavController(unselectedImage: UIImage, selectedImage: UIImage, rootViewController: UIViewController = UIViewController()) -> UINavigationController {
@@ -68,9 +65,9 @@ class MainTabBarController: UITabBarController ,UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
         
-//        if tabBarIndex == 2 {
-//            presentController(viewController: addPostVC())
-//            tabBarController.selectedIndex = 0
-//        }
+        if tabBarIndex == 2 {
+            presentController(viewController: addPostVC())
+            tabBarController.selectedIndex = 0
+        }
     }
 }

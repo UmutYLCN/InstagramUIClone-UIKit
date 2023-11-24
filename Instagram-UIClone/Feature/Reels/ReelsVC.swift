@@ -8,13 +8,11 @@
 import UIKit
 
 class ReelsVC: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
+        let reelsView = ReelsView()
+        view = reelsView
     }
     
-
-
 }

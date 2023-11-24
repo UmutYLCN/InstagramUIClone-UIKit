@@ -7,11 +7,11 @@
 
 import UIKit
 
-class ProfileMyPhotos: UICollectionViewCell {
+class ProfileMyPhotosCell: UICollectionViewCell {
     
     static let identifier = "ProfileMyPhotos"
 
-    var imageView : UIImageView = {
+     var imageView : UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
@@ -22,7 +22,7 @@ class ProfileMyPhotos: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
-        imageView.image = UIImage(named: "post")
+        imageView.image = UIImage(named: "post1")
         contentView.clipsToBounds = true
     }
     
